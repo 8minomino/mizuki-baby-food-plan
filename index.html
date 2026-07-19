@@ -1,0 +1,909 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f97316">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="美月の離乳食進行表">
+  <title>美月の離乳食進行表</title>
+  <style>
+    :root { --font-size-base: 16px; }
+    body {
+      margin: 0;
+      color: #30333a;
+      background: #fffefa;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main {
+      box-sizing: border-box;
+      width: min(100%, 736px);
+      margin: 0 auto;
+      padding: 16px;
+    }
+    #baby-food-weekly-plan-2026 i[data-lucide] {
+      display: none;
+    }
+    @media (max-width: 480px) {
+      main { padding: 14px 12px; }
+    }
+  </style>
+</head>
+<body>
+<main><div id="baby-food-weekly-plan-2026" class="meal-plan">
+  <style>
+    #baby-food-weekly-plan-2026 {
+      --meal-yellow: #facc15;
+      --meal-yellow-soft: #fff8d8;
+      --meal-amber: #f59e0b;
+      --meal-amber-soft: #fff2d6;
+      --meal-orange: #f97316;
+      --meal-orange-soft: #fff3e8;
+      --meal-gray-900: #30333a;
+      --meal-gray-700: #616873;
+      --meal-gray-500: #969da8;
+      --meal-gray-300: #d9dde4;
+      --meal-gray-100: #f7f7fa;
+      --meal-gray-50: #fffefe;
+      color: var(--meal-gray-900);
+      font-size: var(--font-size-base);
+      background: var(--meal-gray-50);
+    }
+
+    #baby-food-weekly-plan-2026 * {
+      box-sizing: border-box;
+      letter-spacing: 0;
+    }
+
+    #baby-food-weekly-plan-2026.meal-plan {
+      width: 100%;
+      display: grid;
+      gap: 0.75rem;
+      overflow: hidden;
+    }
+
+    #baby-food-weekly-plan-2026 .section-label,
+    #baby-food-weekly-plan-2026 .day-label,
+    #baby-food-weekly-plan-2026 .meta-label {
+      color: var(--meal-gray-700);
+    }
+
+    #baby-food-weekly-plan-2026 .week-range,
+    #baby-food-weekly-plan-2026 .day-date,
+    #baby-food-weekly-plan-2026 .app-title,
+    #baby-food-weekly-plan-2026 .phase-title,
+    #baby-food-weekly-plan-2026 .flow-title {
+      font-weight: 500;
+    }
+
+    #baby-food-weekly-plan-2026 .app-title {
+      margin: 0;
+      padding: 0.1rem 0.12rem 0.2rem;
+      font: inherit;
+      font-weight: 500;
+    }
+
+    #baby-food-weekly-plan-2026 .control-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 0.15rem;
+    }
+
+    #baby-food-weekly-plan-2026 .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    #baby-food-weekly-plan-2026 button {
+      appearance: none;
+      display: inline-flex;
+      gap: 0.28rem;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.48rem 0.72rem;
+      color: var(--meal-gray-900);
+      background: var(--meal-yellow);
+      cursor: pointer;
+      font: inherit;
+    }
+
+    #baby-food-weekly-plan-2026 button[data-active="true"],
+    #baby-food-weekly-plan-2026 button.primary-action {
+      border-color: transparent;
+      color: var(--meal-gray-50);
+      background: var(--meal-orange);
+    }
+
+    #baby-food-weekly-plan-2026 button:disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
+
+    #baby-food-weekly-plan-2026 button:focus-visible {
+      outline: 2px solid var(--meal-orange);
+      outline-offset: 2px;
+    }
+
+    #baby-food-weekly-plan-2026 .week-shell,
+    #baby-food-weekly-plan-2026 .overview-shell {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    #baby-food-weekly-plan-2026 .week-summary {
+      display: grid;
+      gap: 0.55rem;
+      padding: 0.68rem 0.72rem;
+      border: 1px solid var(--meal-gray-300);
+      border-radius: 8px;
+      background: var(--meal-gray-50);
+    }
+
+    #baby-food-weekly-plan-2026 .week-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: start;
+      justify-content: space-between;
+    }
+
+    #baby-food-weekly-plan-2026 .week-copy {
+      display: grid;
+      gap: 0.25rem;
+      min-width: min(100%, 15rem);
+    }
+
+    #baby-food-weekly-plan-2026 .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    #baby-food-weekly-plan-2026 .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--meal-gray-300);
+      border-radius: 999px;
+      padding: 0.16rem 0.45rem;
+      color: var(--meal-gray-900);
+      background: var(--meal-gray-100);
+      white-space: nowrap;
+    }
+
+    #baby-food-weekly-plan-2026 .badge.gray {
+      border-color: var(--meal-gray-300);
+      background: var(--meal-gray-100);
+    }
+
+    #baby-food-weekly-plan-2026 .badge.yellow {
+      border-color: color-mix(in srgb, var(--meal-yellow) 45%, var(--meal-gray-300));
+      background: var(--meal-yellow-soft);
+    }
+
+    #baby-food-weekly-plan-2026 .badge.amber {
+      border-color: color-mix(in srgb, var(--meal-amber) 45%, var(--meal-gray-300));
+      background: var(--meal-amber-soft);
+    }
+
+    #baby-food-weekly-plan-2026 .badge.orange {
+      border-color: color-mix(in srgb, var(--meal-orange) 45%, var(--meal-gray-300));
+      background: var(--meal-orange-soft);
+    }
+
+    #baby-food-weekly-plan-2026 .day-list {
+      display: grid;
+      border-top: 1px solid var(--meal-gray-300);
+    }
+
+    #baby-food-weekly-plan-2026 .day-item {
+      border-inline-start: 3px solid var(--meal-gray-300);
+      border-bottom: 1px solid var(--meal-gray-300);
+      border-radius: 8px;
+      padding-inline: 0.42rem;
+      background: var(--meal-gray-50);
+    }
+
+    #baby-food-weekly-plan-2026 .day-item + .day-item {
+      margin-top: 0.16rem;
+    }
+
+    #baby-food-weekly-plan-2026 .day-summary {
+      display: grid;
+      grid-template-columns: minmax(4.6rem, 0.46fr) minmax(0, 1fr) auto auto;
+      gap: 0.5rem;
+      align-items: center;
+      min-height: 2.55rem;
+      padding: 0.4rem 0;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    #baby-food-weekly-plan-2026 .day-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    #baby-food-weekly-plan-2026 .day-summary::after {
+      content: "+";
+      color: var(--meal-gray-700);
+    }
+
+    #baby-food-weekly-plan-2026 .day-item[open] .day-summary::after {
+      content: "-";
+    }
+
+    #baby-food-weekly-plan-2026 .day-item[data-kind="travel"] {
+      border-inline-start: 3px solid var(--meal-gray-500);
+    }
+
+    #baby-food-weekly-plan-2026 .day-item[data-kind="prep"] {
+      border-inline-start: 3px solid var(--meal-amber);
+    }
+
+    #baby-food-weekly-plan-2026 .day-item[data-kind="new"] {
+      border-inline-start: 3px solid var(--meal-orange);
+    }
+
+    #baby-food-weekly-plan-2026 .day-item[data-kind="two"] {
+      border-inline-start: 3px solid var(--meal-yellow);
+    }
+
+    #baby-food-weekly-plan-2026 .summary-meal {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    #baby-food-weekly-plan-2026 .day-date {
+      display: inline-flex;
+      gap: 0.2rem;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-width: 4.15rem;
+      border: 1px solid var(--meal-gray-300);
+      border-radius: 999px;
+      padding: 0.14rem 0.36rem;
+      background: var(--meal-gray-100);
+    }
+
+    #baby-food-weekly-plan-2026 .day-detail {
+      display: grid;
+      gap: 0.34rem;
+      padding: 0.2rem 0 0.7rem;
+    }
+
+    #baby-food-weekly-plan-2026 .detail-row {
+      display: grid;
+      grid-template-columns: minmax(2.7rem, 0.2fr) minmax(0, 1fr);
+      gap: 0.45rem;
+      min-width: 0;
+    }
+
+    #baby-food-weekly-plan-2026 .day-date,
+    #baby-food-weekly-plan-2026 .meal-text,
+    #baby-food-weekly-plan-2026 .memo-text,
+    #baby-food-weekly-plan-2026 .phase-copy,
+    #baby-food-weekly-plan-2026 .flow-copy,
+    #baby-food-weekly-plan-2026 .fact-value {
+      overflow-wrap: anywhere;
+    }
+
+    #baby-food-weekly-plan-2026 .empty {
+      color: var(--meal-gray-700);
+    }
+
+    #baby-food-weekly-plan-2026 .week-note {
+      display: grid;
+      gap: 0.35rem;
+      padding: 0.6rem 0.42rem;
+      border-bottom: 1px solid var(--meal-gray-300);
+    }
+
+    #baby-food-weekly-plan-2026 .overview-grid {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    #baby-food-weekly-plan-2026 .phase-row {
+      display: grid;
+      grid-template-columns: minmax(5.8rem, 0.58fr) minmax(0, 1.4fr);
+      gap: 0.8rem;
+      padding: 0.76rem 0;
+      border-top: 1px solid var(--meal-gray-300);
+    }
+
+    #baby-food-weekly-plan-2026 .phase-row:last-child {
+      border-bottom: 1px solid var(--meal-gray-300);
+    }
+
+    #baby-food-weekly-plan-2026 .phase-marker {
+      display: flex;
+      gap: 0.45rem;
+      align-items: start;
+    }
+
+    #baby-food-weekly-plan-2026 .phase-dot {
+      flex: 0 0 auto;
+      width: 0.72rem;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      margin-top: 0.32rem;
+      border: 1px solid var(--meal-gray-300);
+      background: var(--meal-orange);
+    }
+
+    #baby-food-weekly-plan-2026 .phase-row:nth-child(2) .phase-dot {
+      background: var(--meal-amber);
+    }
+
+    #baby-food-weekly-plan-2026 .phase-row:nth-child(3) .phase-dot {
+      background: var(--meal-yellow);
+    }
+
+    #baby-food-weekly-plan-2026 .phase-row:nth-child(4) .phase-dot {
+      background: var(--meal-orange);
+    }
+
+    #baby-food-weekly-plan-2026 .phase-row:nth-child(5) .phase-dot {
+      background: var(--meal-amber);
+    }
+
+    #baby-food-weekly-plan-2026 .phase-row:nth-child(6) .phase-dot {
+      background: var(--meal-gray-500);
+    }
+
+    #baby-food-weekly-plan-2026 .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 660px) {
+      #baby-food-weekly-plan-2026 .day-summary,
+      #baby-food-weekly-plan-2026 .phase-row {
+        grid-template-columns: 1fr;
+      }
+
+      #baby-food-weekly-plan-2026 .day-summary {
+        grid-template-columns: minmax(4.45rem, 0.37fr) minmax(0, 1fr) auto auto;
+      }
+
+      #baby-food-weekly-plan-2026 .control-strip {
+        align-items: stretch;
+      }
+
+      #baby-food-weekly-plan-2026 .button-group,
+      #baby-food-weekly-plan-2026 .button-group button {
+        flex: 1 1 auto;
+      }
+
+    }
+  </style>
+
+  <h1 class="app-title">美月の離乳食進行表</h1>
+
+  <nav class="control-strip" aria-label="表示切り替え">
+    <div class="button-group">
+      <button type="button" data-action="week" data-active="true" aria-pressed="true">
+        <i data-lucide="calendar-days" aria-hidden="true"></i>
+        週ごと
+      </button>
+      <button type="button" data-action="overview" data-active="false" aria-pressed="false">
+        <i data-lucide="route" aria-hidden="true"></i>
+        全体の流れ
+      </button>
+    </div>
+    <div class="button-group" data-week-nav>
+      <button type="button" data-action="prev">
+        <i data-lucide="chevron-left" aria-hidden="true"></i>
+        前週
+      </button>
+      <button type="button" class="primary-action" data-action="next">
+        翌週
+        <i data-lucide="chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+
+  <section class="week-shell" data-week-shell aria-live="polite"></section>
+  <section class="overview-shell" data-overview-shell hidden></section>
+
+  <script>
+    (() => {
+      const root = document.getElementById("baby-food-weekly-plan-2026");
+      const weekShell = root.querySelector("[data-week-shell]");
+      const overviewShell = root.querySelector("[data-overview-shell]");
+      const weekNav = root.querySelector("[data-week-nav]");
+
+      const weeks = [
+        {
+          code: "準備週",
+          range: "7/27(月)-8/2(日)",
+          age: "4か月25日-5か月0日",
+          theme: "開始前の準備",
+          focus: "器具・姿勢・初回ストックを整える週。食べさせる開始日は8/3朝に固定。",
+          tags: ["準備", "1回食前"],
+          note: "開始サインは、首すわり、支えると座れる、食べ物への興味、スプーンを押し出しにくいこと。",
+          days: [
+            ["7/27", "月", "食べさせない。スプーンと椅子の姿勢だけ確認。", "なし", "食器、小鍋、ブレンダー、製氷トレー、保存容器を準備。", "prep"],
+            ["7/28", "火", "食べさせない。口元に空スプーンを近づけて反応を見る。", "なし", "小児科の診療時間と相談先をメモ。", "prep"],
+            ["7/29", "水", "食べさせない。支え座りと機嫌の良い時間を確認。", "なし", "湿疹が強い場合は開始前に相談。", "prep"],
+            ["7/30", "木", "食べさせない。授乳・ミルクとの間隔を観察。", "なし", "朝のどこが落ち着くか確認。", "prep"],
+            ["7/31", "金", "食べさせない。10倍がゆの作り方を確認。", "なし", "週末に作る分量を少なめに見積もる。", "prep"],
+            ["8/1", "土", "食べさせない。10倍がゆを試作。", "なし", "小さじ1-2相当で冷凍。粒のないなめらかさに。", "prep"],
+            ["8/2", "日", "食べさせない。明日の流れを確認。", "なし", "初回は小児科が開いている月曜朝に。", "prep"]
+          ]
+        },
+        {
+          code: "第1週",
+          range: "8/3(月)-8/9(日)",
+          age: "5か月1日-5か月7日",
+          theme: "米がゆに慣れる",
+          focus: "飲み込む練習が目的。朝だけ、量より機嫌を優先。",
+          tags: ["1回食", "米"],
+          note: "口から出しても失敗ではなく、舌ざわりに慣れている途中です。",
+          days: [
+            ["8/3", "月", "10倍がゆ 小さじ1。", "なし", "初日。食後はいつもの授乳・ミルク。", "new"],
+            ["8/4", "火", "10倍がゆ 小さじ1-2。", "なし", "便・肌・機嫌をメモ。", ""],
+            ["8/5", "水", "10倍がゆ 小さじ2。", "なし", "同じ時間帯でリズム作り。", ""],
+            ["8/6", "木", "10倍がゆ 小さじ3。", "なし", "飲み込みにくければ水分を足す。", ""],
+            ["8/7", "金", "10倍がゆ 小さじ3-4。", "なし", "週末前なので新食材なし。", ""],
+            ["8/8", "土", "10倍がゆ 小さじ4。", "なし", "食べる量より機嫌優先。", ""],
+            ["8/9", "日", "10倍がゆ 小さじ5まで。", "なし", "米がゆ、にんじん、かぼちゃを1週間分だけ冷凍。", "prep"]
+          ]
+        },
+        {
+          code: "第2週",
+          range: "8/10(月)-8/16(日)",
+          age: "5か月8日-5か月14日",
+          theme: "野菜を1種類ずつ",
+          focus: "米がゆに、なめらかな野菜ペーストを足す。",
+          tags: ["1回食", "野菜"],
+          note: "新食材は平日の朝に1種類ずつ。土日は慣れた食材で整える。",
+          days: [
+            ["8/10", "月", "10倍がゆ 小さじ5 + にんじん 小さじ1。", "なし", "新食材。必ず朝だけ。", "new"],
+            ["8/11", "火", "10倍がゆ 小さじ6 + にんじん 小さじ2。", "なし", "問題なければ少し増量。", ""],
+            ["8/12", "水", "10倍がゆ 小さじ6 + かぼちゃ 小さじ1。", "なし", "新食材。水分でのばす。", "new"],
+            ["8/13", "木", "10倍がゆ 小さじ7 + かぼちゃ 小さじ2。", "なし", "甘みのある野菜で進めやすく。", ""],
+            ["8/14", "金", "10倍がゆ 小さじ7 + じゃがいも 小さじ1。", "なし", "新食材。なめらかにのばす。", "new"],
+            ["8/15", "土", "10倍がゆ + 慣れた野菜1種類。", "なし", "新食材なし。", ""],
+            ["8/16", "日", "10倍がゆ + 慣れた野菜。", "なし", "米がゆ20g前後、野菜キューブ、豆腐用の買い物。", "prep"]
+          ]
+        },
+        {
+          code: "第3週",
+          range: "8/17(月)-8/23(日)",
+          age: "5か月15日-5か月21日",
+          theme: "豆腐・しらすへ",
+          focus: "野菜に慣れたら、たんぱく質を少量だけ足す。",
+          tags: ["1回食", "たんぱく質"],
+          note: "豆腐は加熱、しらすは塩抜きしてすりつぶします。",
+          days: [
+            ["8/17", "月", "10倍がゆ + たまねぎ 小さじ1 + 慣れた野菜。", "なし", "新食材。よく加熱して甘く。", "new"],
+            ["8/18", "火", "10倍がゆ + 豆腐 小さじ1 + 慣れた野菜。", "なし", "新食材。豆腐は加熱してなめらかに。", "new"],
+            ["8/19", "水", "10倍がゆ + 豆腐 小さじ2 + 野菜。", "なし", "口当たりが重ければ湯でのばす。", ""],
+            ["8/20", "木", "10倍がゆ + しらす 小さじ1 + 野菜。", "なし", "新食材。塩抜きしてすりつぶす。", "new"],
+            ["8/21", "金", "10倍がゆ + ほうれん草 小さじ1 + 豆腐少量。", "なし", "新食材。葉先をやわらかく。", "new"],
+            ["8/22", "土", "10倍がゆ + 慣れた野菜 + 豆腐またはしらす。", "なし", "新食材なし。", ""],
+            ["8/23", "日", "10倍がゆ + 慣れた組み合わせ。", "なし", "米がゆ、野菜3種、白身魚用の買い物。", "prep"]
+          ]
+        },
+        {
+          code: "第4週",
+          range: "8/24(月)-8/30(日)",
+          age: "5か月22日-5か月28日",
+          theme: "白身魚と野菜の幅を増やす",
+          focus: "旅行中にも使える、慣れた味を少し増やす。",
+          tags: ["1回食", "魚"],
+          note: "魚はよく加熱し、骨と皮を丁寧に確認します。",
+          days: [
+            ["8/24", "月", "10倍がゆ + 白身魚 小さじ1 + にんじん。", "なし", "新食材。鯛・ひらめ・かれいなど。", "new"],
+            ["8/25", "火", "10倍がゆ + 白身魚 小さじ2 + かぼちゃ。", "なし", "ぱさつく時は湯やだしでのばす。", ""],
+            ["8/26", "水", "10倍がゆ + トマト 小さじ1 + 豆腐。", "なし", "新食材。皮と種を除いて加熱。", "new"],
+            ["8/27", "木", "10倍がゆ + ブロッコリー 小さじ1 + 白身魚。", "なし", "新食材。穂先をなめらかに。", "new"],
+            ["8/28", "金", "10倍がゆ + 小松菜 小さじ1 + 豆腐。", "なし", "新食材。えぐみがあれば少量。", "new"],
+            ["8/29", "土", "10倍がゆ + 慣れた野菜 + 豆腐または魚。", "なし", "新食材なし。", ""],
+            ["8/30", "日", "10倍がゆ + 慣れた組み合わせ。", "なし", "米がゆ30gキューブ、野菜、魚を小分け。卵はまだ開始しない。", "prep"]
+          ]
+        },
+        {
+          code: "第5週",
+          range: "8/31(月)-9/6(日)",
+          age: "5か月29日-6か月4日",
+          theme: "6か月、旅行前は安定優先",
+          focus: "卵黄は旅行後へ。豆腐・魚・野菜で進める。",
+          tags: ["1回食", "卵は後で"],
+          note: "9/2で6か月。卵は遅すぎないよう、帰宅後すぐの平日朝に回します。",
+          days: [
+            ["8/31", "月", "10倍がゆ25-30g + 野菜10g + 豆腐または魚5g。", "なし", "慣れた食材で整える。", ""],
+            ["9/1", "火", "10倍がゆ + たんぱく質 + 慣れた野菜。", "なし", "新食材は少なめに。", ""],
+            ["9/2", "水", "10倍がゆ + 白身魚または豆腐 + 野菜2種類。", "なし", "6か月。卵黄は旅行後に開始。", ""],
+            ["9/3", "木", "10倍がゆ + 豆腐 + にんじんまたはかぼちゃ。", "なし", "よく食べても急に増やしすぎない。", ""],
+            ["9/4", "金", "10倍がゆ + しらすまたは白身魚 + 野菜。", "なし", "週末前なので新食材なし。", ""],
+            ["9/5", "土", "10倍がゆ + 慣れた組み合わせ。", "なし", "新食材なし。", ""],
+            ["9/6", "日", "10倍がゆ + 慣れた組み合わせ。", "なし", "旅行用の米がゆ個包装、野菜フレーク、器を確認。", "prep"]
+          ]
+        },
+        {
+          code: "第6週",
+          range: "9/7(月)-9/13(日)",
+          age: "6か月5日-6か月11日",
+          theme: "旅行前の固定メニュー",
+          focus: "旅先で使う米がゆと野菜に寄せる。卵・小麦・乳は入れない。",
+          tags: ["1回食", "旅行前"],
+          note: "9/10以降は新食材なし。持参する野菜フレークは事前に1-2種類だけ試しておきます。",
+          days: [
+            ["9/7", "月", "10倍がゆ + 旅行で使う野菜フレーク少量。", "なし", "新しい野菜フレークを試すならこの日まで。卵はなし。", "new"],
+            ["9/8", "火", "10倍がゆ + にんじんまたはかぼちゃ + 豆腐。", "なし", "旅行に持つ味に寄せる。", ""],
+            ["9/9", "水", "10倍がゆ + 旅行で使う野菜 + 白身魚少量。", "なし", "旅行前最後の調整日。", ""],
+            ["9/10", "木", "10倍がゆ + 慣れた野菜 + 豆腐または魚。", "なし", "ここから新食材なし。", ""],
+            ["9/11", "金", "10倍がゆ + 慣れた野菜。", "なし", "旅行中に食べる量へ寄せる。", ""],
+            ["9/12", "土", "10倍がゆ + 慣れた組み合わせ。", "なし", "米がゆ個包装は9食分+予備。", "prep"],
+            ["9/13", "日", "10倍がゆ + 慣れた組み合わせ。", "なし", "持ち物最終確認。冷凍ストックは作りすぎない。", "prep"]
+          ]
+        },
+        {
+          code: "旅行週",
+          range: "9/14(月)-9/20(日)",
+          age: "6か月12日-6か月18日",
+          theme: "北海道旅行中",
+          focus: "1回食のまま。新食材・卵黄・2回食開始はしない。",
+          tags: ["旅行", "1回食"],
+          note: "疲れている日は休んでもOK。授乳・ミルクを優先します。",
+          days: [
+            ["9/14", "月", "和光堂 手作り応援 米がゆ + 慣れた野菜フレーク少量。", "なし", "移動日は量半分でもOK。", "travel"],
+            ["9/15", "火", "米がゆ + 慣れた野菜フレーク。", "なし", "お湯の温度、器の清潔、食べ残し廃棄。", "travel"],
+            ["9/16", "水", "米がゆ + 慣れた野菜フレーク。", "なし", "疲れていればお休み可。", "travel"],
+            ["9/17", "木", "米がゆ + 慣れた野菜フレーク。", "なし", "初めてのベビーフードは使わない。", "travel"],
+            ["9/18", "金", "米がゆ + 慣れた野菜フレーク。", "なし", "量は普段の7-8割でも十分。", "travel"],
+            ["9/19", "土", "米がゆ + 慣れた野菜フレーク。", "なし", "旅先・週末なので新食材なし。", "travel"],
+            ["9/20", "日", "米がゆ + 慣れた野菜フレーク。", "なし", "便秘気味なら量を抑え、水分・授乳を優先。", "travel"]
+          ]
+        },
+        {
+          code: "帰宅後",
+          range: "9/21(月)-9/27(日)",
+          age: "6か月19日-6か月25日",
+          theme: "帰宅後リズム戻し",
+          focus: "9/21-9/22は旅行継続。帰宅後は体調を戻して2回食準備。",
+          tags: ["旅行後", "1回食"],
+          note: "卵黄は帰宅直後ではなく、2回食初日を避けて10/1朝に開始します。",
+          days: [
+            ["9/21", "月", "米がゆ + 慣れた野菜フレーク。", "なし", "外出予定が重い日は無理に完食を狙わない。", "travel"],
+            ["9/22", "火", "米がゆ + 慣れた野菜フレーク。", "なし", "帰宅日は整える日。夕方食はまだ始めない。", "travel"],
+            ["9/23", "水", "10倍がゆ + 慣れた野菜。", "なし", "新食材なし。旅の疲れを抜く。", ""],
+            ["9/24", "木", "10倍がゆ + 慣れた野菜 + 豆腐または魚。", "なし", "普段量へ戻す。", ""],
+            ["9/25", "金", "10倍がゆ + 慣れた野菜 + たんぱく質。", "なし", "2回食用の量を試算。", ""],
+            ["9/26", "土", "10倍がゆ + 慣れた組み合わせ。", "なし", "新食材なし。", ""],
+            ["9/27", "日", "10倍がゆ + 慣れた組み合わせ。", "なし", "2回食用に米がゆ、野菜、豆腐・魚を小分け冷凍。", "prep"]
+          ]
+        },
+        {
+          code: "第7週",
+          range: "9/28(月)-10/4(日)",
+          age: "6か月26日-7か月2日",
+          theme: "2回食スタート、卵黄開始",
+          focus: "夕方は少量から。卵黄は10/1の朝にごく少量。",
+          tags: ["2回食", "卵黄開始"],
+          note: "2回食初日と卵黄初日を分け、体調の見分けがつくようにします。",
+          days: [
+            ["9/28", "月", "10倍がゆ30g + 野菜10-15g + 豆腐または魚5g。", "米がゆ 小さじ1-2 + にんじん少量。", "2回食初日。夕方は慣れた食材だけ。", "two"],
+            ["9/29", "火", "10倍がゆ + 慣れた野菜 + 豆腐または魚。", "米がゆ + かぼちゃ少量。", "夕方を少し増やす。卵はまだ入れない。", "two"],
+            ["9/30", "水", "10倍がゆ + 野菜 + たんぱく質。", "米がゆ + 慣れた野菜。", "2回食のリズム確認。", "two"],
+            ["10/1", "木", "10倍がゆ + 慣れた野菜 + 固ゆで卵黄ごく少量。", "米がゆ + 慣れた野菜。", "卵黄開始。耳かき1程度から、朝だけ。", "new"],
+            ["10/2", "金", "10倍がゆ + 野菜 + 豆腐または魚。", "米がゆ + 野菜。", "7か月。卵黄は休み、様子を見る。", "two"],
+            ["10/3", "土", "10倍がゆ + 慣れた野菜 + たんぱく質。", "米がゆ + 慣れた野菜。", "週末は新食材なし。", "two"],
+            ["10/4", "日", "10倍がゆ + 慣れた組み合わせ。", "米がゆ + 慣れた野菜。", "7倍がゆへ移行できるよう、少し粒を残す練習ストック。", "prep"]
+          ]
+        },
+        {
+          code: "第8週",
+          range: "10/5(月)-10/11(日)",
+          age: "7か月3日-7か月9日",
+          theme: "7倍がゆへゆっくり",
+          focus: "舌でつぶせる固さへ。卵黄は少量ずつ、日を空ける。",
+          tags: ["2回食", "粒感"],
+          note: "粒が苦手なら10倍がゆへ戻してOK。夕方は朝の半量未満から。",
+          days: [
+            ["10/5", "月", "7倍がゆ30-40g + 野菜15g + 豆腐または魚5-10g。", "7倍がゆ10g + 野菜5g。", "粒感を試す。", "two"],
+            ["10/6", "火", "7倍がゆ + 慣れた野菜 + 固ゆで卵黄ごく少量。", "米がゆ + 慣れた野菜。", "前回問題なければ耳かき2程度。", "new"],
+            ["10/7", "水", "7倍がゆ + 野菜 + 豆腐または魚。", "米がゆ + かぼちゃ。", "夕方も食後授乳・ミルクで補う。", "two"],
+            ["10/8", "木", "7倍がゆ + 鶏ささみ 小さじ1 + 野菜。", "米がゆ + 野菜。", "新食材。ぱさつくのでとろみをつける。", "new"],
+            ["10/9", "金", "7倍がゆ + 野菜 + 固ゆで卵黄 小さじ1/8目安。", "米がゆ + 豆腐少量。", "卵黄は体調が良い時だけ。", "new"],
+            ["10/10", "土", "7倍がゆ + 慣れた野菜 + たんぱく質。", "米がゆ + 慣れた野菜。", "新食材なし。", "two"],
+            ["10/11", "日", "7倍がゆ + 慣れた組み合わせ。", "米がゆ + 慣れた野菜。", "翌週用に7倍がゆ、野菜3-4種、豆腐・魚・ささみを小分け。", "prep"]
+          ]
+        },
+        {
+          code: "第9週",
+          range: "10/12(月)-10/18(日)",
+          age: "7か月10日-7か月16日",
+          theme: "2回食を生活リズムへ",
+          focus: "夕方を少し増やし、朝だけ新食材を続ける。",
+          tags: ["2回食", "主食副菜主菜"],
+          note: "卵黄は週2回程度の朝に少しずつ。無糖ヨーグルトは初回のみ朝。",
+          days: [
+            ["10/12", "月", "7倍がゆ + 慣れた野菜 + たんぱく質。", "7倍がゆ15g + 野菜5-10g。", "祝日想定。新食材なし。", "two"],
+            ["10/13", "火", "7倍がゆ + ひきわり納豆 小さじ1 + 野菜。", "米がゆ + かぼちゃ。", "新食材。湯通しして粘りを調整。", "new"],
+            ["10/14", "水", "7倍がゆ + 野菜 + 固ゆで卵黄 小さじ1/4目安。", "米がゆ + 豆腐少量。", "卵黄は様子を見ながら。", "new"],
+            ["10/15", "木", "7倍がゆ + 鮭 小さじ1 + 野菜。", "米がゆ + 野菜。", "新食材。塩なしでよく加熱、骨を確認。", "new"],
+            ["10/16", "金", "7倍がゆ + 無糖ヨーグルト 小さじ1 + 野菜。", "米がゆ + 慣れた野菜。", "乳製品の新食材。加糖なし、朝だけ。", "new"],
+            ["10/17", "土", "7倍がゆ + 慣れた野菜 + たんぱく質。", "7倍がゆ + 慣れた野菜。", "新食材なし。", "two"],
+            ["10/18", "日", "7倍がゆ + 慣れた組み合わせ。", "7倍がゆ + 慣れた野菜。", "次週用に主食・野菜・たんぱく質を2回食分で冷凍。", "prep"]
+          ]
+        },
+        {
+          code: "第10週",
+          range: "10/19(月)-10/25(日)",
+          age: "7か月17日-7か月23日",
+          theme: "夕方を半量へ",
+          focus: "朝は主食・野菜・たんぱく質、夕方はその半量を目安に。",
+          tags: ["2回食", "夕方増量"],
+          note: "小麦は平日朝に少量。卵黄は焦らず、体調が良い日だけ。",
+          days: [
+            ["10/19", "月", "7倍がゆ40g + 野菜15g + たんぱく質10g目安。", "7倍がゆ20g + 野菜10g + 豆腐少量。", "夕方にもたんぱく質を少し。", "two"],
+            ["10/20", "火", "やわらかうどん 小さじ1 + 米がゆ + 野菜。", "米がゆ + 慣れた野菜。", "小麦の新食材。単品少量から。", "new"],
+            ["10/21", "水", "7倍がゆ + 野菜 + 固ゆで卵黄 小さじ1/2目安。", "米がゆ + 野菜 + 豆腐少量。", "前回問題なければ少量増。", "new"],
+            ["10/22", "木", "7倍がゆ + ツナ水煮 小さじ1 + 野菜。", "米がゆ + かぼちゃ。", "新食材。食塩不使用または湯通し。", "new"],
+            ["10/23", "金", "7倍がゆ + 野菜 + ヨーグルト小さじ2程度。", "米がゆ + 野菜。", "乳製品は様子を見ながら。", "two"],
+            ["10/24", "土", "7倍がゆ + 慣れた野菜 + たんぱく質。", "7倍がゆ + 慣れた野菜。", "新食材なし。", "two"],
+            ["10/25", "日", "7倍がゆ + 慣れた組み合わせ。", "7倍がゆ + 慣れた野菜。", "ストックは鮮度優先で1週間分だけ。", "prep"]
+          ]
+        },
+        {
+          code: "第11週",
+          range: "10/26(月)-11/1(日)",
+          age: "7か月24日-7か月30日",
+          theme: "メニューを組み合わせる",
+          focus: "単品から、主食・副菜・主菜の小さなセットへ。",
+          tags: ["2回食", "組み合わせ"],
+          note: "パンがゆは小麦・乳の表示を確認。全卵は急がず卵黄を進めます。",
+          days: [
+            ["10/26", "月", "7倍がゆ45g + 野菜15-20g + たんぱく質10g。", "7倍がゆ25g + 野菜10g + たんぱく質5g。", "食べる姿勢と口の動きを見る。", "two"],
+            ["10/27", "火", "パンがゆ 小さじ1-2 + 野菜 + ヨーグルト少量。", "米がゆ + 野菜 + 豆腐。", "新食材。原材料表示を確認。", "new"],
+            ["10/28", "水", "7倍がゆ + ささみ + 野菜2種類。", "米がゆ + かぼちゃ + 豆腐。", "野菜は混ぜすぎず味を残す。", "two"],
+            ["10/29", "木", "7倍がゆ + 卵黄 小さじ1目安 + 野菜。", "米がゆ + 慣れた野菜。", "卵黄はゆっくり。全卵は急がない。", "new"],
+            ["10/30", "金", "7倍がゆ + 白身魚または鮭 + 野菜。", "米がゆ + 野菜 + 豆腐。", "食べにくい日はとろみを使う。", "two"],
+            ["10/31", "土", "7倍がゆ + 慣れた組み合わせ。", "7倍がゆ + 慣れた組み合わせ。", "新食材なし。", "two"],
+            ["11/1", "日", "7倍がゆ + 慣れた組み合わせ。", "7倍がゆ + 慣れた組み合わせ。", "8か月目前。粒感を少し残すストックを試す。", "prep"]
+          ]
+        },
+        {
+          code: "第12週",
+          range: "11/2(月)-11/8(日)",
+          age: "8か月0日-8か月6日",
+          theme: "2回食を安定",
+          focus: "2回食が自然に回ることを優先。次の3回食は12/2以降に検討。",
+          tags: ["2回食", "8か月"],
+          note: "鉄を意識しつつ、体調・便・睡眠が崩れる日は予定を戻します。",
+          days: [
+            ["11/2", "月", "7倍がゆ50g目安 + 野菜20g + たんぱく質10g前後。", "7倍がゆ30g + 野菜10-15g + たんぱく質5g。", "8か月。量よりリズム安定。", "two"],
+            ["11/3", "火", "7倍がゆ + 慣れた野菜 + 豆腐または魚。", "7倍がゆ + 慣れた野菜。", "祝日想定。新食材なし。", "two"],
+            ["11/4", "水", "7倍がゆ + 原材料が確認しやすい鉄強化ベビーフード少量。", "米がゆ + 野菜 + 豆腐。", "新食材扱い。初めての原材料が複数入る商品は避け、月齢表示を確認。", "new"],
+            ["11/5", "木", "うどんまたはパンがゆ + 野菜 + たんぱく質。", "7倍がゆ + 野菜。", "主食の選択肢を増やす。", "two"],
+            ["11/6", "金", "7倍がゆ + 卵黄または魚 + 野菜。", "7倍がゆ + 慣れた野菜 + 豆腐。", "卵は焦らず、体調の良い日に。", "two"],
+            ["11/7", "土", "7倍がゆ + 慣れた組み合わせ。", "7倍がゆ + 慣れた組み合わせ。", "新食材なし。", "two"],
+            ["11/8", "日", "7倍がゆ + 慣れた組み合わせ。", "7倍がゆ + 慣れた組み合わせ。", "次週以降も2回食継続。3回食は12/2頃から準備チェック。", "prep"]
+          ]
+        }
+      ];
+
+      const flow = [
+      ["7/27-8/2", "準備", "器具・姿勢・初回ストック。開始サインを確認して8/3へ。"],
+      ["8/3-8/30", "ひとさじ開始", "10倍がゆから野菜、豆腐、しらす、白身魚へ。"],
+      ["8/31-9/13", "旅行前は安定", "6か月に入るが卵は旅行後へ。旅先で使う味に寄せる。"],
+      ["9/14-9/22", "北海道旅行", "1回食キープ。米がゆ個包装と慣れた野菜フレークだけ。"],
+      ["9/23-9/27", "帰宅後調整", "帰宅後の体調と生活リズムを戻し、2回食の冷凍準備。"],
+      ["9/28-11/8", "2回食へ", "9/28から2回食。10/1朝に卵黄開始、7倍がゆへ移行。"]
+      ];
+
+      const weekBounds = [
+        ["2026-07-27", "2026-08-02"],
+        ["2026-08-03", "2026-08-09"],
+        ["2026-08-10", "2026-08-16"],
+        ["2026-08-17", "2026-08-23"],
+        ["2026-08-24", "2026-08-30"],
+        ["2026-08-31", "2026-09-06"],
+        ["2026-09-07", "2026-09-13"],
+        ["2026-09-14", "2026-09-20"],
+        ["2026-09-21", "2026-09-27"],
+        ["2026-09-28", "2026-10-04"],
+        ["2026-10-05", "2026-10-11"],
+        ["2026-10-12", "2026-10-18"],
+        ["2026-10-19", "2026-10-25"],
+        ["2026-10-26", "2026-11-01"],
+        ["2026-11-02", "2026-11-08"]
+      ];
+
+      const dateToTime = (value) => {
+        const [year, month, day] = value.split("-").map(Number);
+        return new Date(year, month - 1, day).getTime();
+      };
+
+      const storedWeek = () => {
+        try {
+          const value = window.localStorage.getItem("baby-food-week-index");
+          const index = Number(value);
+          return Number.isInteger(index) && index >= 0 && index < weeks.length ? index : null;
+        } catch {
+          return null;
+        }
+      };
+
+      const weekForToday = () => {
+        const today = new Date();
+        const todayTime = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+        const match = weekBounds.findIndex(([start, end]) => todayTime >= dateToTime(start) && todayTime <= dateToTime(end));
+        if (match >= 0) return match;
+        const next = weekBounds.findIndex(([start]) => todayTime < dateToTime(start));
+        return next >= 0 ? next : weeks.length - 1;
+      };
+
+      const saveWeek = () => {
+        try {
+          window.localStorage.setItem("baby-food-week-index", String(currentWeek));
+        } catch {
+        }
+      };
+
+      let currentWeek = storedWeek() ?? weekForToday();
+      let mode = "week";
+
+      const escapeHtml = (value) => String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+      const kindLabel = (kind) => {
+        if (kind === "travel") return ["ー", "gray"];
+        if (kind === "prep") return ["作り置き", "amber"];
+        if (kind === "new") return ["新食材", "orange"];
+        if (kind === "two") return ["2回食", "yellow"];
+        return ["", ""];
+      };
+
+      const tagTone = (index) => ["orange", "amber", "yellow", "gray"][index % 4];
+
+      const renderDay = (day) => {
+        const [date, dow, morning, evening, memo, kind] = day;
+        const [label, tone] = kindLabel(kind);
+        return `
+          <details class="day-item" data-kind="${escapeHtml(kind)}">
+            <summary class="day-summary">
+              <span class="day-date">${escapeHtml(date)} <span class="meta-label">${escapeHtml(dow)}</span></span>
+              <span class="summary-meal">${escapeHtml(morning)}</span>
+              ${label ? `<span class="badge ${tone}">${escapeHtml(label)}</span>` : `<span></span>`}
+            </summary>
+            <div class="day-detail">
+              <div class="detail-row">
+                <span class="day-label">朝</span>
+                <span class="meal-text">${escapeHtml(morning)}</span>
+              </div>
+              <div class="detail-row">
+                <span class="day-label">夕</span>
+                <span class="meal-text ${evening === "なし" ? "empty" : ""}">${escapeHtml(evening)}</span>
+              </div>
+              <div class="detail-row">
+                <span class="day-label">メモ</span>
+                <span class="memo-text">${escapeHtml(memo)}</span>
+              </div>
+            </div>
+          </details>
+        `;
+      };
+
+      const renderWeek = () => {
+        const week = weeks[currentWeek];
+        weekShell.innerHTML = `
+          <section class="week-summary" aria-label="選択中の週">
+            <div class="week-top">
+              <div class="week-copy">
+                <div class="section-label">${escapeHtml(week.code)}</div>
+                <div class="week-range">${escapeHtml(week.range)}</div>
+                <div>${escapeHtml(week.theme)}</div>
+              </div>
+              <div class="badge-row">
+                <span class="badge">${escapeHtml(week.age)}</span>
+                ${week.tags.map((tag, index) => `<span class="badge ${tagTone(index)}">${escapeHtml(tag)}</span>`).join("")}
+              </div>
+            </div>
+            <div>${escapeHtml(week.focus)}</div>
+          </section>
+          <section class="day-list" aria-label="1週間分の表">
+            ${week.days.map(renderDay).join("")}
+          </section>
+          <section class="week-note" aria-label="週のメモ">
+          <div class="section-label">週メモ</div>
+            <div>${escapeHtml(week.note)}</div>
+          </section>
+        `;
+      };
+
+      const renderOverview = () => {
+        overviewShell.innerHTML = `
+          <section class="overview-grid" aria-label="大まかな流れ">
+            ${flow.map((item) => `
+              <div class="phase-row">
+                <div class="phase-marker">
+                  <span class="phase-dot" aria-hidden="true"></span>
+                  <div>
+                    <div class="meta-label">${escapeHtml(item[0])}</div>
+                    <div class="phase-title">${escapeHtml(item[1])}</div>
+                  </div>
+                </div>
+                <div class="phase-copy">${escapeHtml(item[2])}</div>
+              </div>
+            `).join("")}
+          </section>
+        `;
+      };
+
+      const syncControls = () => {
+        root.querySelectorAll("button[data-action]").forEach((button) => {
+          const action = button.dataset.action;
+          if (action === "week" || action === "overview") {
+            button.dataset.active = String(action === mode);
+            button.setAttribute("aria-pressed", String(action === mode));
+          }
+        });
+        weekNav.hidden = mode !== "week";
+        const prev = root.querySelector('button[data-action="prev"]');
+        const next = root.querySelector('button[data-action="next"]');
+        prev.disabled = currentWeek === 0;
+        next.disabled = currentWeek === weeks.length - 1;
+      };
+
+      const render = () => {
+        const showWeek = mode === "week";
+        weekShell.hidden = !showWeek;
+        overviewShell.hidden = showWeek;
+        if (showWeek) renderWeek();
+        else renderOverview();
+        syncControls();
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+          window.lucide.createIcons({ attrs: { width: 16, height: 16 } });
+        }
+      };
+
+      root.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-action]");
+        if (!button) return;
+        const action = button.dataset.action;
+        if (action === "week" || action === "overview") {
+          mode = action;
+        }
+        if (action === "prev") {
+          currentWeek = Math.max(0, currentWeek - 1);
+          saveWeek();
+        }
+        if (action === "next") {
+          currentWeek = Math.min(weeks.length - 1, currentWeek + 1);
+          saveWeek();
+        }
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</div>
+</main>
+</body>
+</html>
