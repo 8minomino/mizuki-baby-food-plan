@@ -138,6 +138,10 @@
       gap: 0.8rem;
     }
 
+    #baby-food-weekly-plan-2026 [hidden] {
+      display: none !important;
+    }
+
     #baby-food-weekly-plan-2026 .week-summary {
       display: grid;
       gap: 0.55rem;
@@ -257,9 +261,7 @@
 
     #baby-food-weekly-plan-2026 .summary-meal {
       min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      overflow-wrap: anywhere;
     }
 
     #baby-food-weekly-plan-2026 .day-date {
@@ -381,6 +383,8 @@
 
       #baby-food-weekly-plan-2026 .day-summary {
         grid-template-columns: minmax(4.45rem, 0.37fr) minmax(0, 1fr) auto auto;
+        gap: 0.35rem;
+        align-items: start;
       }
 
       #baby-food-weekly-plan-2026 .control-strip {
