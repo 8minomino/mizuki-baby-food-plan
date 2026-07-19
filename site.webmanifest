@@ -1,0 +1,16 @@
+{
+  "name": "美月の離乳食進行表",
+  "short_name": "離乳食表",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffefa",
+  "theme_color": "#facc15",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
